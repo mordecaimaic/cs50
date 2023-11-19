@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+
+<form action="/" method="POST" >
+    Go to the specific in a random book
+    <input type="text" name="page">
+    <button type="submit">go</button>
+    <p  style="word-wrap: break-word; white-space: normal;">{{random_text}}</p>
+</form>
+
+<h1>history record</h1>
+<form action="/" method="POST">
+    <button type="subimit" name="clear" value="true"">Clear All The History</button>
+</form>
+<table>
+    <thead>
+        <th>id</th>
+        <th>pages</th>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+        <tr>
+            <td>{{row['id']}}</td>
+            <td>{{row['pages']}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

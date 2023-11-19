@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            JS-pratice
+        </title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                document.querySelector('form').addEventListener('submit', function(event){
+                    let name_alert = document.querySelector('input').value;
+                    alert('hello, ' + name_alert);
+                });
+
+                document.querySelector('#usr_input').addEventListener('keyup', function(event){
+                    let name = document.querySelector('#output');
+                    let input = document.querySelector('#usr_input');
+                    if (input.value)
+                    {
+                        // alert('hi');
+                        name.innerHTML = `Hello, ${input.value}`
+                    }
+                    else
+                    {
+                        name.innerHTML = `Hello, What is your name?`;
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body align="center">
+        <form>
+            <input type="text">
+            <button type="submit">click</button>
+        </form>
+
+        <form>
+            <input id="usr_input" type="text" value="What is your name?">
+        </form>
+        <p id="output" style="color: blue">Hello, what is your name?</p>
+    </body>
+    <script>
+
+    </script>
+</html>

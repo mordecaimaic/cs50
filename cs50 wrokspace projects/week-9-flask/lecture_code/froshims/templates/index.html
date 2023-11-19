@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <form action="/register" method="post">
+        <input type="text" name="name_input" placeholder="Name" autocomplete="off" autofocus>
+        <select>
+            <option disabled selected>Sport</option>
+            <option value="Basketball">Basketball</option>
+            <option value="Soccer">Soccer</option>
+            <option value="Ultimate Frisbee">Ultimate Frisbee</option>
+        </select>
+        <button type="sbumit">Register</button>
+    </form>
+{% endblock %}
+

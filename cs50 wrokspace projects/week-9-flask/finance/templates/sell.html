@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <div class="p-3 mb-5 bg-warning text-dark">
+        <h1>Sell Stock</h1>
+        <div class="text-end">Hello: {{name}}! Your Cash: {% if cash < 0 %} -{% endif %} {{cash | usd}}</div>
+    </div>
+
+
+    <form action="/sell" method="post">
+
+
+        <select class="form-select mx-auto w-auto mb-3" name="symbol">
+            <option selected disabled>Stock Symbol</option>
+            {% for stock in stock_own_all %}
+            <option value="{{stock.stock_symbol}}">{{stock.stock_symbol}}</option>
+            {% endfor %}
+          </select>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="shares" placeholder="Shares" type="number" min="1">
+        </div>
+        <button class="btn btn-primary mb-3" type="submit" data-bs-target="#exampleModal">Sell</button>
+    </form>
+    <div>
+        {% if sell_flag %}
+        <h3 class="p-3 mb-2 bg-warning text-dark">{{name}}, you have sold {{symbol}}. You got {{revenue | usd}}$ back, your stock return is {% if stock_return > 0 %} +{% elif stock_return < 0 %} -{% endif %}{{stock_return| usd}}.
+        </h3>
+        <form action="/back" method="POST">
+            <button class="btn btn-dark" type="submit">
+                View My Stock
+            </button>
+        </form>
+        {% endif %}
+    </div>
+
+
+{% endblock %}

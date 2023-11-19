@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+        <h1 class="p-3 mb-2 bg-primary text-white">My Total Asset</h1>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>
+                        Stock Name
+                    </th>
+                    <th>
+                        Stock symbol
+                    </th>
+                    <th>
+                        Buy Price
+                    </th>
+                    <th>
+                        Shares
+                    </th>
+                    <th>
+                        Current Price
+                    </th>
+                    <th>
+                        Price Fluctuation
+                    </th>
+                    <th>
+                        Profit Loss
+                    </th>
+                    <th>
+                        Total Value
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in stockown %}
+                <tr>
+                    <td>
+                        {{row.stock_name}}
+                    </td>
+                    <td>
+                        {{row.stock_symbol}}
+                    </td>
+                    <td>
+                        {{row.buy_price | usd}}
+                    </td>
+                    <td>
+                        {{row.shares}}
+                    </td>
+                    <td>
+                        {{current_price[row.stock_symbol] | usd}}
+                    </td>
+                    <td>
+                        {% if current_price[row.stock_symbol] > row.buy_price %}
+                        +
+                        {% elif current_price[row.stock_symbol] < row.buy_price %}
+                        -
+                        {% endif %}
+                        {{(current_price[row.stock_symbol] - row.buy_price) | usd}}
+                    </td>
+                    <td>
+                        {% if current_price[row.stock_symbol] > row.buy_price %}
+                            +
+                        {% elif current_price[row.stock_symbol] < row.buy_price %}
+                            -
+                        {% endif %}
+                        {{((current_price[row.stock_symbol] - row.buy_price) * row.shares) | usd}}
+                    </td>
+                    <td>
+                        {{(current_price[row.stock_symbol] * row.shares) | usd}}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="p-3 mb-2 bg-warning text-dark row mx-auto">
+            <h3 class="col">Total asset: {{(cash+stock_value) | usd}}</h3>
+            <h3 class="col">Cash: {{(cash) | usd}}</h3>
+            <h3 class="col">Profit Loss: {% if profit_loss > 0 %} + {% elif profit_loss < 0 %} -{% endif %} {{profit_loss | usd}}</h3>
+            <h3 class="col">Stock Value: {{stock_value | usd}}</h3>
+        </div>
+        <form action="/" method="post">
+            <button class="btn btn-dark" type="submit">EN/CN</button>
+        </form>
+
+{% endblock %}

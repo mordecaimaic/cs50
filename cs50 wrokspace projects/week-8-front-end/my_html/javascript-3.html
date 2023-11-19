@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            JS, pratice
+        </title>
+        <style>
+            .output {
+                color: blue;
+            }
+        </style>
+    </head>
+    <body align="center">
+        <form>
+            <input type="text" style="font-size:18px">
+        </form>
+        <h1 class="output">Hello, what is your name</h1>
+        <h1 class="output">Hello, what is your name</h1>
+        <h1 class="output">Hello, what is your name</h1>
+        <h1 class="output">Hello, what is your name</h1>
+        <h1 class="output">Hello, what is your name</h1>
+        <h1 class="output">Hello, what is your name</h1>
+        <h1 class="output">Hello, what is your name</h1>
+        <h1 class="output">Hello, what is your name</h1>
+        <h1 class="output">Hello, what is your name</h1>
+        <h1 class="output">Hello, what is your name</h1>
+
+    </body>
+    <script>
+        document.querySelectorAll('.output').forEach(function(outputElement) {
+            document.querySelector('input').addEventListener('keyup', function(event) {
+                input = document.querySelector('input').value;
+                if (input) {
+                outputElement.innerHTML = `I Love You, ${input}, ❤🧡💛💚💙💜🤎🖤🤍`;
+                } else {
+                outputElement.innerHTML = `Hello, what is your name?`;
+                }
+            });
+        });
+
+    </script>
+</html>

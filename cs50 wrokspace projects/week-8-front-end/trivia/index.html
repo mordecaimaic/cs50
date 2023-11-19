@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!-- The buttons are from bootstrap -->
+<!-- https://getbootstrap.com/docs/5.3/components/buttons/ -->
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <title>Trivia!</title>
+        <style>
+            output {
+                font-size: 20px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice</h2>
+                <hr>
+                <!-- Add multiple choice question here -->
+                <h3>What is the animal in Arctic?</h3>
+                <form id="my_form">
+                    <button type="submit" class="btn btn-primary" id="button_0">Penguin</button>
+                    <button type="submit" class="btn btn-primary" id="button_1">Bison</button>
+                    <button type="submit" class="btn btn-primary" id="button_2">Polar bears</button>
+                    <button type="submit" class="btn btn-primary" id="button_3">Tiger</button>
+                </form>
+                <output id="chose_output"></output>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- Add free response question here -->
+                <h3>What is the most valuable compay In the world?(2023)</h3>
+            </div>
+
+                <div class="input-group w-25">
+                        <input type="text" class="form-control col-2" placeholder="Type..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn-outline-secondary" id="text_button">Answer!</button>
+                </div>
+                <div>
+                <output id="text_output"></output>
+                </div>
+                <div>
+                <button class="btn-outline-secondary" id="reset_button">Reset!</button>
+                </div>
+
+        </div>
+    </body>
+    <script>
+         const answerButtons = document.querySelectorAll('.btn');
+        //  Listen the botton-0
+        document.querySelector('#button_0').addEventListener('click', function(event){
+            result = document.querySelector('output');
+            button = document.querySelector('#button_0');
+            button.style="background-color: orange";
+            result.style="color: orange";
+            result.innerHTML = `Incorrect`;
+
+            // disable the other buttons
+            answerButtons.forEach(btn => {
+                    btn.disabled = true;
+                });
+        });
+        // Listen the botton-1
+        document.querySelector('#button_1').addEventListener('click', function(event){
+            result = document.querySelector('output');
+            button = document.querySelector('#button_1');
+            button.style='background-color: orange';
+            result.style='color: orange';
+            result.innerHTML = `Incorrect`;
+
+            // disable the other buttons
+            answerButtons.forEach(btn => {
+                    btn.disabled = true;
+                });
+        });
+        // Listen the botton-2
+        document.querySelector('#button_2').addEventListener('click', function(event){
+            result = document.querySelector('output');
+            button = document.querySelector('#button_2');
+            button.style='background-color: green';
+            result.style='color: green';
+            result.innerHTML = `Correnct!`;
+
+            // disable the other buttons
+            answerButtons.forEach(btn => {
+                    btn.disabled = true;
+                });
+        });
+        // Listen the botton-3
+        document.querySelector('#button_3').addEventListener('click', function(event){
+            result = document.querySelector('output');
+            button = document.querySelector('#button_3');
+            button.style='background-color: orange';
+            result.style='color: orange';
+            result.innerHTML = `Incorrect`;
+
+            // disable the other buttons
+            answerButtons.forEach(btn => {
+                    btn.disabled = true;
+                });
+        });
+
+        // Listen the text_input box
+        document.querySelector('#text_button').addEventListener('click',function(event){
+            text = document.querySelector('input');
+            event.preventDefault();
+            let input = text.value.toLowerCase();
+            if (input == `apple`)
+            {
+                output = document.querySelector('#text_output');
+                output.style = 'color: green';
+                output.innerHTML = `Correct!`;
+                text.style.backgroundColor = 'green';
+                // text
+            }
+            else
+            {
+                output = document.querySelector('#text_output');
+                output.style = 'color: orange';
+                output.innerHTML = `Incorrect`;
+                text.style = "background-color: orange";
+            }
+            button = document.querySelector('#text_button');
+            button.disabled = true;
+        });
+
+        document.querySelector('#reset_button').addEventListener('click', function(event){
+            // document.querySelector('#text_form').reset();
+            // enable all the buttons
+            answerButtons.forEach(btn => {
+                    btn.disabled = false;
+                        btn.style.backgroundColor = '';
+                        btn.style.color = '';
+            });
+            const toggleBTN = document.getElementById('btn');
+            output_1 = document.querySelector('#chose_output');
+            output_1.innerHTML = ``;
+            output_2 = document.querySelector('#text_output');
+            output_2.innerHTML = ``;
+
+            text_input = document.querySelector('input');
+            text_input.value = ``;
+            text_input.style.backgroundColor = '';
+            // answerButtons.forEach(btn => {
+            //     btn.classList.toggle('btn btn-primary');
+            // });
+            text_button = document.querySelector('#text_button');
+            text_button.disabled = false;
+
+        });
+
+    </script>
+</html>

@@ -1,0 +1,10 @@
+sort1 uses: Bubble sort
+
+How do you know?: I type the command :"time ./sort1 reversed50000.txt", and it cost the least time, so it must be bubble sort, because it can quit the sort in advance.
+sort2 uses: Merge sort
+
+How do you know?: I type the command :"time ./sort2 random50000.txt", and it cost teh least time, so it must be merge sort. Time: O(nlogn)
+
+sort3 uses: Selection sort
+
+How do you know?: When you figure out the 2 algorithm above, then the rest must be selection sort!

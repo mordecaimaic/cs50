@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add
+{% endblock %}
+
+{% block main %}
+    <div class="p-3 mb-2 bg-dark text-light">
+        <h1>Add Cash $$$</h1>
+        <div class="text-end">
+            Hello: {{name}}! Your Cash:  {% if cash < 0 %} -{% endif %}{{cash | usd}}
+        </div>
+    </div>
+    <form action="/add" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="cash" placeholder="Add Cash" type="number">
+        </div>
+        <button class="btn btn-primary mb-5" type="add">Add Cash</button>
+    </form>
+
+    <form action="/zero" method="post">
+        <button class="btn btn-danger" type="add">To Zero</button>
+    </form>
+{% endblock %}
+
+
+
+
+

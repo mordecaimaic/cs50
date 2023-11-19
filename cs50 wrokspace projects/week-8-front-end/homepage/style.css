@@ -1,0 +1,13 @@
+ /* when the navbar is fixed up, make some ghost margin to push the section down*/
+ body::before {
+    display: block;
+    content: '';
+    height: 60px;
+}
+
+
+@media (min-width: 768px) {
+    .news-input {
+        width: 50%;
+    }
+}

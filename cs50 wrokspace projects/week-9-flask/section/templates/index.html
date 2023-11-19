@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1>Ramdom page</h1>
+    <form action="/" method="post">
+        This is a random book, input the page you want to go to
+        <input type="text" name="amount">
+        <button type="buttom">button</button>
+    </form>
+    <div>
+        <p style="word-wrap: break-word; white-space: normal;">{{random_string}}</p>
+    </div>
+
+    <h1> Search history </h1>
+    <table class="table">
+        <thead>
+            <th>
+                id
+            </th>
+            <th>
+                pages
+            </th>
+        </thead>
+        <tbody>
+            {% for row in history %}
+
+                <tr>
+                    <td>
+                        {{row["id"]}}
+                    </td>
+                    <td>
+                        {{row["page"]}}
+                    </td>
+                </tr>
+             {% endfor %}
+
+        </tbody>
+    </table>
+
+    <form action="/" method="post">
+        <button type="submit" name="delete" value="true">Delete all the history</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,24 @@
+<style>
+    body {
+        /* background-color: blue; */
+    }
+
+    .my_table{
+        border: solid red 5px;
+        text-align: center;
+    }
+    tr{
+        height: 50px;
+
+    }
+    td
+    {
+        width: 50px;
+        /* border: solid black 1px; */
+        text-align: center;
+        font-size: 30pt;
+        background-color: black;
+        color: white;
+        font-family: georgia;
+    }
+</style>

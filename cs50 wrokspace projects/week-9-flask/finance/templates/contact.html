@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <div class="p-3 mb-3 bg-primary text-white">
+        <h1>Hello: {{name}}! Want to say something to the developer?</h1>
+    </div>
+    <div class="form-group w-auto mb-3">
+        <form action="/contact" method="post">
+                <textarea autocomplete="off" autofocus class="form-control mx-auto mb-3" rows="5" name="message"
+                placeholder="Say something to the Developer..." style="width: 50%;"></textarea>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <th>
+                time
+            </th>
+
+            <th>
+                My Message
+            </th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+            {% for row in message %}
+            <tr>
+                <td>{{row.time}}</td>
+                <td>{{row.my_message}}</td>
+                <td>
+                    <form action="/message_delete" method="post">
+                        <input type="hidden" name="message_id" value="{{row.id}}">
+                        <button type="submit" class="btn btn-warning">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+
+
+
+

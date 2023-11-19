@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <h1 class="p-3 mb-2 bg-info text-white">Transactions</h1>
+    <form action="/history" method="post">
+        <button class="btn btn-primary"type="submit">Clear History</button>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Stock Symbol
+                </th>
+                <th>
+                    Trade Mode
+                </th>
+                <th>
+                    Trade Price
+                </th>
+                <th>
+                    Shares
+                </th>
+                <th>
+                    Profit_Loss
+                </th>
+                <th>
+                    Trade Time
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for row in history %}
+                <tr>
+                    <td>
+                        {{row.stock_symbol}}
+                    </td>
+                    <td>
+                        {{row.trade_mode}}
+                    </td>
+                    <td>
+                        {{row.price | usd}}
+                    </td>
+                    <td>
+                        {{row.shares}}
+                    </td>
+                    <td>
+                        {% if row.profit_loss > 0 %}
+                        +
+                        {% elif row.profit_loss < 0 %}
+                        -
+                        {% endif %}
+                        {{row.profit_loss | usd}}
+                    </td>
+                    <td>
+                        {{row.time}}
+                    </td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

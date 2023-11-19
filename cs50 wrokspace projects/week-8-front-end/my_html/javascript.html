@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            js-practice
+        </title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                document.querySelector('form').addEventListener('submit', function(event){
+                let name = document.querySelector('input').value;
+                alert('hello, ' + name);
+                event.preventDefault();
+                });
+
+
+
+
+                let input = document.querySelector('input')
+                input.addEventListener('keyup', function(event){
+                let name = document.querySelector('output');
+                if (input.value)
+                {
+                    name.innerHTML = `How are you, ${input.value}?`;
+                }
+                else
+                {
+                    name.innerHTML = `Who you are??`;
+                }
+                });
+
+            });
+
+
+        </script>
+    </head>
+    <body align="center">
+        <form>
+             <input type="text" autocomplete="off" autofocus placeholder="text" id="name">
+            <button type="submit">click me! </button>
+        </form>
+        <output style="color: blue">Who you are?</output>
+    </body>
+    <script>
+
+    </script>
+</html>

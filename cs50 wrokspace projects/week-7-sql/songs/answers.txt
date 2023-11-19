@@ -1,0 +1,4 @@
+1. I will characterize their audio aura by using their average danceability energy loudness speechiness valence tempo.
+
+2.Maybe using a better formula to calcuate their audio aura.
+  Use some alternative or additional factors that could be used to better characterize a listener's audio aura.

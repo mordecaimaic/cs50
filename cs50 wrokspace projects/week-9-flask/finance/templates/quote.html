@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <div class="p-3 mb-2 bg-secondary text-white">
+        <h1>Quote Stock</h1>
+        <div class="text-end">Hello: {{username}}! Your Cash:  {% if cash < 0 %} -{% endif %} {{cash | usd}}</div>
+    </div>
+    <form action="/quote" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="symbol" placeholder="Stock" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Look Up The Stock</button>
+    </form>
+    <h1>
+        <a href="https://stockanalysis.com/list/biggest-companies/">Top Company Stock Symbol</a>
+    </h1>
+    {% if lookup_result %}
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>
+                        Stock Name
+                    </th>
+                    <th>
+                        Stock Price
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        {{stock_name}}
+                    </td>
+                    <td>
+                        {{stock_price | usd}}$
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
